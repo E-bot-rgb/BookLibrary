@@ -1,4 +1,4 @@
-namespace BookLibrary.API.Interfaces
+namespace BookLibrary.Application.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {

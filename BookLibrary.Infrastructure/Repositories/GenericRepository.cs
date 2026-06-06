@@ -1,8 +1,8 @@
-using BookLibrary.API.Data;
-using BookLibrary.API.Interfaces;
+using BookLibrary.Application.Interfaces;
+using BookLibrary.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookLibrary.API.Repositories
+namespace BookLibrary.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

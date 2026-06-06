@@ -1,8 +1,8 @@
-using BookLibrary.API.Data;
-using BookLibrary.API.Interfaces;
-using BookLibrary.API.Models;
+using BookLibrary.Application.Interfaces;
+using BookLibrary.Domain.Models;
+using BookLibrary.Infrastructure.Data;
 
-namespace BookLibrary.API.Repositories
+namespace BookLibrary.Infrastructure.Repositories
 {
     public class BookRepository : GenericRepository<Book>, IBookRepository
     {

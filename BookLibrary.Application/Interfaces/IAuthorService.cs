@@ -1,6 +1,6 @@
-using BookLibrary.API.Models;
+using BookLibrary.Domain.Models;
 
-namespace BookLibrary.API.Interfaces
+namespace BookLibrary.Application.Interfaces
 {
     public interface IAuthorService
     {
