@@ -1,4 +1,7 @@
 <Solution>
   <Project Path="BookLibrary.API/BookLibrary.API.csproj" />
+  <Project Path="BookLibrary.Application/BookLibrary.Application.csproj" Id="e3a47f2e-a378-4a8f-80fb-bd7fa1ee1f0a" />
+  <Project Path="BookLibrary.Domain/BookLibrary.Domain.csproj" Id="0419a5af-ea00-4ee1-b64e-19241cf3c869" />
+  <Project Path="BookLibrary.Infrastructure/BookLibrary.Infrastructure.csproj" Id="2710155b-2c44-4633-a9ba-107bb8b5a515" />
   <Project Path="BookLibrary.Tests/BookLibrary.Tests.csproj" />
 </Solution>
