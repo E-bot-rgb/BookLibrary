@@ -1,3 +1,4 @@
+using BookLibrary.Application.DTOs;
 using BookLibrary.Application.Interfaces;
 using BookLibrary.Application.Services;
 using BookLibrary.Domain.Models;
@@ -35,7 +36,7 @@ namespace BookLibrary.Tests
         }
 
         [Fact]
-        public async Task GetByIdAsync_WhenAuthorExists_ReturnsCorrectAuthor()
+        public async Task GetByIdAsync_WhenAuthorExists_ReturnsCorrectAuthorDto()
         {
             // Arrange
             var author = new Author { Id = 1, Name = "J.K. Rowling", Bio = "British author" };
@@ -63,29 +64,31 @@ namespace BookLibrary.Tests
         }
 
         [Fact]
-        public async Task AddAsync_WithValidAuthor_CallsRepositoryOnce()
+        public async Task AddAsync_WithValidDto_CallsRepositoryOnce()
         {
             // Arrange
-            var author = new Author { Name = "New Author", Bio = "New Bio" };
+            var dto = new CreateAuthorDto { Name = "New Author", Bio = "New Bio" };
 
             // Act
-            await _service.AddAsync(author);
+            await _service.AddAsync(dto);
 
             // Assert
-            await _repository.Received(1).AddAsync(author);
+            await _repository.Received(1).AddAsync(Arg.Any<Author>());
         }
 
         [Fact]
-        public async Task UpdateAsync_WithValidAuthor_CallsRepositoryOnce()
+        public async Task UpdateAsync_WhenAuthorExists_CallsRepositoryUpdate()
         {
             // Arrange
-            var author = new Author { Id = 1, Name = "Updated Author", Bio = "Updated Bio" };
+            var author = new Author { Id = 1, Name = "Old Name", Bio = "Old Bio" };
+            var dto = new UpdateAuthorDto { Name = "Updated Name", Bio = "Updated Bio" };
+            _repository.GetByIdAsync(1).Returns(author);
 
             // Act
-            await _service.UpdateAsync(author);
+            await _service.UpdateAsync(1, dto);
 
             // Assert
-            await _repository.Received(1).UpdateAsync(author);
+            await _repository.Received(1).UpdateAsync(Arg.Any<Author>());
         }
 
         [Fact]

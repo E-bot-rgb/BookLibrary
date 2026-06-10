@@ -1,13 +1,13 @@
-using BookLibrary.Domain.Models;
+using BookLibrary.Application.DTOs;
 
 namespace BookLibrary.Application.Interfaces
 {
     public interface IBookService
     {
-        Task<IEnumerable<Book>> GetAllAsync();
-        Task<Book?> GetByIdAsync(int id);
-        Task AddAsync(Book book);
-        Task UpdateAsync(Book book);
+        Task<IEnumerable<BookDto>> GetAllAsync();
+        Task<BookDto?> GetByIdAsync(int id);
+        Task AddAsync(CreateBookDto dto);
+        Task UpdateAsync(int id, UpdateBookDto dto);
         Task DeleteAsync(int id);
     }
 }

@@ -1,5 +1,5 @@
+using BookLibrary.Application.DTOs;
 using BookLibrary.Application.Interfaces;
-using BookLibrary.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibrary.API.Controllers
@@ -27,17 +27,16 @@ namespace BookLibrary.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Book book)
+        public async Task<IActionResult> Create(CreateBookDto dto)
         {
-            await _service.AddAsync(book);
-            return CreatedAtAction(nameof(GetById), new { id = book.Id }, book);
+            await _service.AddAsync(dto);
+            return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Book book)
+        public async Task<IActionResult> Update(int id, UpdateBookDto dto)
         {
-            if (id != book.Id) return BadRequest();
-            await _service.UpdateAsync(book);
+            await _service.UpdateAsync(id, dto);
             return NoContent();
         }
 
